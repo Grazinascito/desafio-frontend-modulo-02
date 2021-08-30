@@ -61,13 +61,22 @@ function populatingMovies(movieData){
                 const voteAverage = document.querySelector('.modal__average');
                 const modalGenres = document.querySelector('.modal__genres');
 
-                const {backdrop_path, title, vote_average, overview, genres} = body
+                const {backdrop_path, title, vote_average, overview, genres} = body;
 
                 modalTitle.textContent = title;
                 imgDoModal.src = backdrop_path;
                 modalDescription.textContent = overview;
                 voteAverage.textContent = vote_average;
-                // modalGenres.textContent = genres.map(item => item.name).join(", ");
+                
+                
+                modalGenres.innerHTML = '';
+                genres.forEach((genre) => {
+                    const modalGenre = document.createElement('span');
+                    modalGenre.textContent = genre.name;
+                    modalGenre.classList.add('modal_genre');
+                    modalGenres.append(modalGenre);
+                });
+                
                
             });
         });
